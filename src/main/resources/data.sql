@@ -1,0 +1,1 @@
+insert into beast values (null,"dragon","description","url images")
