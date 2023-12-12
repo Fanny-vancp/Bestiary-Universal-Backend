@@ -26,7 +26,7 @@ private BeastAdapterPersistence persistence ;
         persistence = new BeastAdapterPersistence(beastsRepository);
         List<Beast> beastsListAnswered = beastsRepository.findAllBeasts();
 
-        Assertions.assertEquals(1,beastsListAnswered.size());
+        Assertions.assertEquals(4,beastsListAnswered.size());
         Assertions.assertEquals("dragon",beastsListAnswered.get(0).getNameBeast());
     }
 }

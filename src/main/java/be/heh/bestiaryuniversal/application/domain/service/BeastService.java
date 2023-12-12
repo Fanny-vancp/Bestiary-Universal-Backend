@@ -21,8 +21,8 @@ public class BeastService implements BeastUseCase {
     }
 
     @Override
-    public List<Beast> getBeastByUniverse(String universe) {
-        List<Beast> beastsList = beastPersistence.storeBeastsByUniverse();
+    public List<Beast> getBeastByUniverse(int idUniverse) {
+        List<Beast> beastsList = beastPersistence.storeBeastsByUniverse(idUniverse);
         return beastsList;
     }
 }

@@ -48,10 +48,10 @@ public class BeastServiceTest {
         beastsList.add(new Beast(4, "Yeti", "the lord of the ring", "A large ape-like creature said to inhabit the Himalayan mountains"));
         beastsList.add(new Beast(5, "Kelpie", "dnd", "A shape-shifting water spirit inhabiting lochs and pools in Scotland"));
 
-        when(persistenceMock.storeBeastsByUniverse()).thenReturn(beastsList);
+        when(persistenceMock.storeBeastsByUniverse(1)).thenReturn(beastsList);
 
         BeastService beastService = new BeastService(persistenceMock);
-        List<Beast> beasts=beastService.getBeastByUniverse("dnd");
+        List<Beast> beasts=beastService.getBeastByUniverse(1);
 
         Assertions.assertEquals(beastsList.size(),beasts.size());
         Assertions.assertEquals(beastsList.get(1).getNameBeast(),beasts.get(1).getNameBeast());

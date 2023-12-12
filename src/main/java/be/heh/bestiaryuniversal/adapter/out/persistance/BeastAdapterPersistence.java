@@ -29,7 +29,8 @@ public class BeastAdapterPersistence implements BeastPersistence {
     }
 
     @Override
-    public List<Beast> storeBeastsByUniverse() {
-        return null;
+    public List<Beast> storeBeastsByUniverse(int idUniverse) {
+        List<Beast> beastsListAnswered = beastsRepository.findBeastsByUniverse(idUniverse);
+        return beastsListAnswered;
     }
 }

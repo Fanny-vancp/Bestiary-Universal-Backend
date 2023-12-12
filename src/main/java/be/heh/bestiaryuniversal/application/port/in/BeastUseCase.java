@@ -8,5 +8,5 @@ import java.util.List;
 public interface BeastUseCase {
     // methods
     List<Beast> getAllBeast();
-    List<Beast> getBeastByUniverse(String universe);
+    List<Beast> getBeastByUniverse(int idUniverse);
 }

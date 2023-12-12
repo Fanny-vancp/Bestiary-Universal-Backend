@@ -21,9 +21,17 @@ public class AdapterWeb {
         this.beastUseCase=beastUseCase;
     }
     @GetMapping("/beasts")
-    public List<Beast> beastsList(){
-        // don't forget to do the if param universe then use getBeastsByUniverse
-        List<Beast> listBeast = beastUseCase.getAllBeast();
+    public List<Beast> beastsList(@RequestParam(required = false, defaultValue = "0") int universe){
+        // request
+        // https://bestiary.onrender.com/beasts -> get all beasts
+        // https://bestiary.onrender.com/beasts?universe=1 -> get all beasts by his universe with the id(1)
+
+        List<Beast> listBeast;
+        if (universe!=0) {
+            listBeast = beastUseCase.getBeastByUniverse(universe);
+        }else {
+            listBeast = beastUseCase.getAllBeast();
+        }
         return listBeast;
     }
 }

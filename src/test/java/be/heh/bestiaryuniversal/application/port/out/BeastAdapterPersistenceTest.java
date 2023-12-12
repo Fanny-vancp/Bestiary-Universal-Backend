@@ -17,13 +17,21 @@ public class BeastAdapterPersistenceTest {
     private BeastAdapterPersistence persistence ;
 
     @Test
-    public void testFindAllPurchases() {
+    public void testFindAllBeasts() {
 
         persistence = new BeastAdapterPersistence(beastsRepository);
         List<Beast> listBeast = persistence.storeAllBeasts();
 
-        Assertions.assertEquals(1,listBeast.size());
+        Assertions.assertEquals(4,listBeast.size());
         Assertions.assertEquals("dragon",listBeast.get(0).getNameBeast());
+    }
+
+    @Test
+    public void testFindBeastsByUniverse(){
+        persistence = new BeastAdapterPersistence(beastsRepository);
+        List<Beast> listBeast = persistence.storeBeastsByUniverse(1);
+
+        Assertions.assertEquals(2,listBeast.size());
     }
 }
 

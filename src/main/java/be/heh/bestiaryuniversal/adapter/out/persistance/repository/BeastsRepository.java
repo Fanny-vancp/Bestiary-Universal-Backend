@@ -21,4 +21,13 @@ public class BeastsRepository {
         String sql = "SELECT * FROM Beast";
         return jdbc.query(sql, new BeastRowMapper());
     }
+
+    public List<Beast> findBeastsByUniverse(int idUniverse){
+        String sql = "SELECT Beast.*\n" +
+                "FROM Beast\n" +
+                "JOIN BeastUniverse ON Beast.id = BeastUniverse.beast_id\n" +
+                "JOIN Universe ON BeastUniverse.universe_id = Universe.id\n" +
+                "WHERE Universe.id = ?;\n";
+        return jdbc.query(sql, new BeastRowMapper(), idUniverse);
+    }
 }

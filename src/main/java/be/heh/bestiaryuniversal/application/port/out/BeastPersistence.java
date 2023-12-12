@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface BeastPersistence {
     List<Beast> storeAllBeasts();
-    List<Beast> storeBeastsByUniverse();
+    List<Beast> storeBeastsByUniverse(int idUniverse);
 }
