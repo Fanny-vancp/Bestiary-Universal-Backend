@@ -33,6 +33,17 @@ public class BeastAdapterPersistenceTest {
 
         Assertions.assertEquals(2,listBeast.size());
     }
+
+    @Test
+    public void testAddNewBeastToDB(){
+        persistence = new BeastAdapterPersistence(beastsRepository);
+        Beast beast = new Beast(5, "guenaude","url img","description");
+        //persistence.addNewBeastToDB(beast);
+
+        //List<Beast> listBeast = persistence.storeAllBeasts();
+
+        //Assertions.assertEquals(6,listBeast.size());
+    }
 }
 
 

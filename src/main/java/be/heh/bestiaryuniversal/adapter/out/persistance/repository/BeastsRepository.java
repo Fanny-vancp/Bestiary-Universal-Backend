@@ -1,5 +1,6 @@
 package be.heh.bestiaryuniversal.adapter.out.persistance.repository;
 
+import be.heh.bestiaryuniversal.adapter.in.web.BeastValidation;
 import be.heh.bestiaryuniversal.application.domain.model.Beast;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,17 +18,24 @@ public class BeastsRepository {
     }
 
     // methods
-    public List<Beast> findAllBeasts() {
-        String sql = "SELECT * FROM Beast";
+    public List<Beast> selectAllBeasts() {
+        String sql = "SELECT * FROM beast";
         return jdbc.query(sql, new BeastRowMapper());
     }
 
-    public List<Beast> findBeastsByUniverse(int idUniverse){
+    public List<Beast> selectBeastsByUniverse(int idUniverse){
         String sql = "SELECT Beast.*\n" +
                 "FROM Beast\n" +
                 "JOIN BeastUniverse ON Beast.id = BeastUniverse.beast_id\n" +
                 "JOIN Universe ON BeastUniverse.universe_id = Universe.id\n" +
                 "WHERE Universe.id = ?;\n";
         return jdbc.query(sql, new BeastRowMapper(), idUniverse);
+    }
+
+    public void insertNewBeast(BeastValidation newBeast){
+        String sql = "INSERT INTO beast (nom, description, img) VALUES (?, ?, ?)";
+        jdbc.update(sql, newBeast.getNameBeast(),
+                newBeast.getDescriptionBeast(), newBeast.getImgBeast());
+        // setIDbEAST
     }
 }

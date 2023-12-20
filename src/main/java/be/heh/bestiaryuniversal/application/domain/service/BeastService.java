@@ -1,6 +1,7 @@
 package be.heh.bestiaryuniversal.application.domain.service;
 
 
+import be.heh.bestiaryuniversal.adapter.in.web.BeastValidation;
 import be.heh.bestiaryuniversal.application.domain.model.Beast;
 import be.heh.bestiaryuniversal.application.port.in.BeastUseCase;
 import be.heh.bestiaryuniversal.application.port.out.BeastPersistence;
@@ -24,5 +25,10 @@ public class BeastService implements BeastUseCase {
     public List<Beast> getBeastByUniverse(int idUniverse) {
         List<Beast> beastsList = beastPersistence.storeBeastsByUniverse(idUniverse);
         return beastsList;
+    }
+
+    @Override
+    public void addNewBeast(BeastValidation newBeast) {
+        beastPersistence.addNewBeastToDB(newBeast);
     }
 }

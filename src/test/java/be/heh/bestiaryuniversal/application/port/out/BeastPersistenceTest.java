@@ -22,9 +22,9 @@ private BeastsRepository beastsRepository;
 
 private BeastAdapterPersistence persistence ;
     @Test
-    public void testFindAllPurchases() {
+    public void testFindAllBeasts() {
         persistence = new BeastAdapterPersistence(beastsRepository);
-        List<Beast> beastsListAnswered = beastsRepository.findAllBeasts();
+        List<Beast> beastsListAnswered = beastsRepository.selectAllBeasts();
 
         Assertions.assertEquals(4,beastsListAnswered.size());
         Assertions.assertEquals("dragon",beastsListAnswered.get(0).getNameBeast());
