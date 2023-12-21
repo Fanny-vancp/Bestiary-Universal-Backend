@@ -31,4 +31,11 @@ public class BeastService implements BeastUseCase {
     public void addNewBeast(BeastValidation newBeast) {
         beastPersistence.addNewBeastToDB(newBeast);
     }
+
+    @Override
+    public void deleteBeast(int idBeast) {
+        beastPersistence.deleteBeastFromDB(idBeast);
+    }
+
+
 }

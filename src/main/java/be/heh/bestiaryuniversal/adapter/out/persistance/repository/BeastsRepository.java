@@ -38,4 +38,9 @@ public class BeastsRepository {
                 newBeast.getDescriptionBeast(), newBeast.getImgBeast());
         // setIDbEAST
     }
+
+    public void deleteBeastFromTheDB(int idBeast){
+        String sql = "DELETE FROM beast WHERE id = ?";
+        jdbc.update(sql, idBeast);
+    }
 }

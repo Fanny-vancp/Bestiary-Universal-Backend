@@ -1,6 +1,7 @@
 package be.heh.bestiaryuniversal.application.port.out;
 
 import be.heh.bestiaryuniversal.BestiaryUniversalApplication;
+import be.heh.bestiaryuniversal.adapter.in.web.BeastValidation;
 import be.heh.bestiaryuniversal.adapter.out.persistance.BeastAdapterPersistence;
 import be.heh.bestiaryuniversal.adapter.out.persistance.repository.BeastsRepository;
 import be.heh.bestiaryuniversal.application.domain.model.Beast;
@@ -37,12 +38,22 @@ public class BeastAdapterPersistenceTest {
     @Test
     public void testAddNewBeastToDB(){
         persistence = new BeastAdapterPersistence(beastsRepository);
-        Beast beast = new Beast(5, "guenaude","url img","description");
-        //persistence.addNewBeastToDB(beast);
+        BeastValidation beast = new BeastValidation( "guenaude","url img","description");
+        persistence.addNewBeastToDB(beast);
 
-        //List<Beast> listBeast = persistence.storeAllBeasts();
+        List<Beast> listBeast = persistence.storeAllBeasts();
 
         //Assertions.assertEquals(6,listBeast.size());
+    }
+
+    @Test
+    public void testDeleteBeastFromDB(){
+        persistence = new BeastAdapterPersistence(beastsRepository);
+        int idBeast = 10;
+        persistence.deleteBeastFromDB(idBeast);
+
+        List<Beast> listBeast = persistence.storeAllBeasts();
+        Assertions.assertEquals(9, listBeast.size());
     }
 }
 

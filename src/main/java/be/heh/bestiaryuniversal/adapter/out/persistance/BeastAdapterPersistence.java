@@ -37,4 +37,9 @@ public class BeastAdapterPersistence implements BeastPersistence {
     public void addNewBeastToDB(BeastValidation newBeast) {
         beastsRepository.insertNewBeast(newBeast);
     }
+
+    @Override
+    public void deleteBeastFromDB(int idBeast) {
+        beastsRepository.deleteBeastFromTheDB(idBeast);
+    }
 }
