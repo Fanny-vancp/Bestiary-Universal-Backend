@@ -12,7 +12,7 @@ public class BeastRowMapper implements RowMapper<Beast> {
         return new Beast(
                 rs.getInt("id"),
                 rs.getString("nom"),
-                rs.getString("img"),
-                rs.getString("description"));
+                rs.getString("description"),
+                rs.getString("img"));
     }
 }
