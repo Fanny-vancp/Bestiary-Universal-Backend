@@ -1,27 +1,25 @@
 package be.heh.bestiaryuniversal.adapter.in.web;
 
 import be.heh.bestiaryuniversal.application.domain.model.Beast;
+import be.heh.bestiaryuniversal.application.domain.model.Universe;
 import be.heh.bestiaryuniversal.application.port.in.BeastUseCase;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
-import org.springframework.http.HttpEntity;
+import be.heh.bestiaryuniversal.application.port.in.UniverseUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 @CrossOrigin
 @RestController
 public class AdapterWeb {
     // attribute
     private BeastUseCase beastUseCase;
+    private UniverseUseCase universeUseCase;
 
     //constructor
-    public AdapterWeb(BeastUseCase beastUseCase){
+    public AdapterWeb(BeastUseCase beastUseCase, UniverseUseCase universeUseCase){
         this.beastUseCase=beastUseCase;
+        this.universeUseCase = universeUseCase;
     }
     @GetMapping("/beasts")
     public ResponseEntity<List<Beast>> beastsList(@RequestParam(required = false, defaultValue = "0") int universe){
@@ -49,4 +47,29 @@ public class AdapterWeb {
         return ResponseEntity.status(HttpStatus.CREATED).body("Beast added successfully");
     }
     // think about delete
+
+
+
+    @GetMapping("/universes")
+    public ResponseEntity<List<Universe>> universesList(){
+        // request
+        // https://bestiary.onrender.com/universes -> get all universes
+
+        List<Universe> listUniverse;
+
+        listUniverse = universeUseCase.getAllUniverse();
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(listUniverse);
+    }
+
+    @PostMapping("/universe")
+    public ResponseEntity<String> addUniverse(@RequestBody UniverseValidation universe) {
+        universeUseCase.addNewUniverse(universe);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Universe added successfully");
+    }
+
+    @DeleteMapping("/universe")
+    public ResponseEntity<String> deleteUniverse(@RequestParam(required = true) int idUniverse) {
+        universeUseCase.deleteUniverse(idUniverse);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Universe deleted successfully");
+    }
 }
