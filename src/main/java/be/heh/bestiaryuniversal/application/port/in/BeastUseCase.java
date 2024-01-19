@@ -12,5 +12,7 @@ public interface BeastUseCase {
     List<Beast> getBeastByUniverse(int idUniverse);
     List<Beast> getBeastByUser(int idUser);
     void addNewBeast(BeastValidation newBeast);
+    void addBeastInUniverse(int idBeast, int idUniverse);
     void deleteBeast(int idBeast);
+    void deleteBeastInUniverse(int idBeast, int idUniverse);
 }

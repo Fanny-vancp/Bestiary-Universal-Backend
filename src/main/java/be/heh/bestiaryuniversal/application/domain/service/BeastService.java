@@ -39,8 +39,18 @@ public class BeastService implements BeastUseCase {
     }
 
     @Override
+    public void addBeastInUniverse(int idBeast, int idUniverse) {
+        beastPersistence.addBeastToUniverse(idBeast, idUniverse);
+    }
+
+    @Override
     public void deleteBeast(int idBeast) {
         beastPersistence.deleteBeastFromDB(idBeast);
+    }
+
+    @Override
+    public void deleteBeastInUniverse(int idBeast, int idUniverse) {
+        beastPersistence.deleteBeastFromUniverse(idBeast, idUniverse);
     }
 
 

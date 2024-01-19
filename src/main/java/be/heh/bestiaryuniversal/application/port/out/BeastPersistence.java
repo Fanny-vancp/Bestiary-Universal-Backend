@@ -9,5 +9,7 @@ public interface BeastPersistence {
     List<Beast> storeBeastsByUniverse(int idUniverse);
     List<Beast> storeBeastsByUser(int idUser);
     void addNewBeastToDB(BeastValidation newBeast);
+    void addBeastToUniverse(int idBeast, int idUniverse);
     void deleteBeastFromDB(int idBeast);
+    void deleteBeastFromUniverse(int idBeast, int idUniverse);
 }

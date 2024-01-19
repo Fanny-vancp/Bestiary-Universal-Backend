@@ -48,8 +48,18 @@ public class BeastsRepository {
         // setIDbEAST
     }
 
+    public void insertBeastToBeastUniverse(int idBeast, int idUniverse){
+        String sql = "INSERT INTO beastuniverse (beast_id, universe_id) VALUES (?, ?)";
+        jdbc.update(sql, idBeast, idUniverse);
+    }
+
     public void deleteBeastFromTheDB(int idBeast){
         String sql = "DELETE FROM beast WHERE id = ?";
         jdbc.update(sql, idBeast);
+    }
+
+    public void deleteBeastFromTheUniverse(int idBeast, int idUniverse){
+        String sql = "DELETE FROM beastuniverse WHERE beast_id = ? AND universe_id = ?";
+        jdbc.update(sql, idBeast, idUniverse);
     }
 }

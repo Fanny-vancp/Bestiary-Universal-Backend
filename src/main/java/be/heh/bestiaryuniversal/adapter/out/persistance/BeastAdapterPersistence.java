@@ -45,7 +45,17 @@ public class BeastAdapterPersistence implements BeastPersistence {
     }
 
     @Override
+    public void addBeastToUniverse(int idBeast, int idUniverse) {
+        beastsRepository.insertBeastToBeastUniverse(idBeast, idUniverse);
+    }
+
+    @Override
     public void deleteBeastFromDB(int idBeast) {
         beastsRepository.deleteBeastFromTheDB(idBeast);
+    }
+
+    @Override
+    public void deleteBeastFromUniverse(int idBeast, int idUniverse) {
+        beastsRepository.deleteBeastFromTheUniverse(idBeast, idUniverse);
     }
 }
