@@ -32,6 +32,15 @@ public class BeastsRepository {
         return jdbc.query(sql, new BeastRowMapper(), idUniverse);
     }
 
+    public List<Beast> selectBeastsByUser(int idUser){
+        String sql = "SELECT Beast.*\n" +
+                "FROM Beast\n" +
+                "JOIN userbeast ON Beast.id = userbeast.beast_id\n" +
+                "JOIN \"User\" ON userbeast.user_id = \"User\".id\n" +
+                "WHERE \"User\".id = ?;\n";
+        return jdbc.query(sql, new BeastRowMapper(), idUser);
+    }
+
     public void insertNewBeast(BeastValidation newBeast){
         String sql = "INSERT INTO beast (nom, description, img) VALUES (?, ?, ?)";
         jdbc.update(sql, newBeast.getNameBeast(),

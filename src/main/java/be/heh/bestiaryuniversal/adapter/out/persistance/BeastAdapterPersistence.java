@@ -34,6 +34,12 @@ public class BeastAdapterPersistence implements BeastPersistence {
     }
 
     @Override
+    public List<Beast> storeBeastsByUser(int idUser) {
+        List<Beast> beastListAnswered = beastsRepository.selectBeastsByUser(idUser);
+        return beastListAnswered;
+    }
+
+    @Override
     public void addNewBeastToDB(BeastValidation newBeast) {
         beastsRepository.insertNewBeast(newBeast);
     }

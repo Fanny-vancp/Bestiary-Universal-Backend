@@ -10,6 +10,7 @@ public interface BeastUseCase {
     // methods
     List<Beast> getAllBeast();
     List<Beast> getBeastByUniverse(int idUniverse);
+    List<Beast> getBeastByUser(int idUser);
     void addNewBeast(BeastValidation newBeast);
     void deleteBeast(int idBeast);
 }

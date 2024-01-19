@@ -7,6 +7,7 @@ import java.util.List;
 public interface BeastPersistence {
     List<Beast> storeAllBeasts();
     List<Beast> storeBeastsByUniverse(int idUniverse);
+    List<Beast> storeBeastsByUser(int idUser);
     void addNewBeastToDB(BeastValidation newBeast);
     void deleteBeastFromDB(int idBeast);
 }

@@ -30,7 +30,9 @@ public class AdapterWeb {
 
     // beast
     @GetMapping("/beasts")
-    public ResponseEntity<List<Beast>> beastsList(@RequestParam(required = false, defaultValue = "0") int universe){
+    public ResponseEntity<List<Beast>> beastsList(
+            @RequestParam(required = false, defaultValue = "0") int universe,
+            @RequestParam(required = false, defaultValue = "0") int user){
         // request
         // https://bestiary.onrender.com/beasts -> get all beasts
         // https://bestiary.onrender.com/beasts?universe=1 -> get all beasts by his universe with the id(1)
@@ -39,6 +41,8 @@ public class AdapterWeb {
         List<Beast> listBeast;
         if (universe!=0) {
             listBeast = beastUseCase.getBeastByUniverse(universe);
+        }else if (user!=0){
+            listBeast = beastUseCase.getBeastByUser(user);
         }else {
             listBeast = beastUseCase.getAllBeast();
         }

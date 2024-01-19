@@ -28,6 +28,12 @@ public class BeastService implements BeastUseCase {
     }
 
     @Override
+    public List<Beast> getBeastByUser(int idUser) {
+        List<Beast> beastsList = beastPersistence.storeBeastsByUser(idUser);
+        return beastsList;
+    }
+
+    @Override
     public void addNewBeast(BeastValidation newBeast) {
         beastPersistence.addNewBeastToDB(newBeast);
     }
