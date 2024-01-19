@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface UserUseCase {
     List<User> getAllUser();
-    User getUserById();
     void addNewUser(UserValidation newUser);
     void deleteUser(int idUser);
 }

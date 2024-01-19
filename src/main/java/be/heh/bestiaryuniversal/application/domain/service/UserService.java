@@ -23,17 +23,12 @@ public class UserService implements UserUseCase {
     }
 
     @Override
-    public User getUserById() {
-        return null;
-    }
-
-    @Override
     public void addNewUser(UserValidation newUser) {
-
+        userPersistence.addNewUserToDB(newUser);
     }
 
     @Override
     public void deleteUser(int idUser) {
-
+        userPersistence.deleteUserFromDB(idUser);
     }
 }

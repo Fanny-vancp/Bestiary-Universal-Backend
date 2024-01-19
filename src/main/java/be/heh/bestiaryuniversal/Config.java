@@ -2,12 +2,16 @@ package be.heh.bestiaryuniversal;
 
 import be.heh.bestiaryuniversal.adapter.out.persistance.BeastAdapterPersistence;
 import be.heh.bestiaryuniversal.adapter.out.persistance.UniverseAdapterPersistence;
+import be.heh.bestiaryuniversal.adapter.out.persistance.UserAdapterPersistence;
 import be.heh.bestiaryuniversal.adapter.out.persistance.repository.BeastsRepository;
 import be.heh.bestiaryuniversal.adapter.out.persistance.repository.UniverseRepository;
+import be.heh.bestiaryuniversal.adapter.out.persistance.repository.UserRepository;
 import be.heh.bestiaryuniversal.application.domain.service.BeastService;
 import be.heh.bestiaryuniversal.application.domain.service.UniverseService;
+import be.heh.bestiaryuniversal.application.domain.service.UserService;
 import be.heh.bestiaryuniversal.application.port.in.BeastUseCase;
 import be.heh.bestiaryuniversal.application.port.in.UniverseUseCase;
+import be.heh.bestiaryuniversal.application.port.in.UserUseCase;
 import be.heh.bestiaryuniversal.application.port.out.BeastPersistence;
 import be.heh.bestiaryuniversal.application.port.out.UniversePersistence;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +30,9 @@ public class Config {
     UniverseRepository universeRepository;
     UniversePersistence universePersistence;
 
+    @Autowired
+    UserRepository userRepository;
+
 
    /* @Bean
     public BeastPersistence getBeastPersistence(){
@@ -42,5 +49,8 @@ public class Config {
         return new UniverseService(new UniverseAdapterPersistence(universeRepository));
     }
 
-
+    @Bean
+    public UserUseCase getUserUseCase() {
+        return  new UserService(new UserAdapterPersistence(userRepository));
+    }
 }

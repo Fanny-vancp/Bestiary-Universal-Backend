@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface UserPersistence {
     List<User> storeAllUser();
-    User storeUserById();
     void addNewUserToDB(UserValidation newUser);
     void deleteUserFromDB(int idUser);
 }

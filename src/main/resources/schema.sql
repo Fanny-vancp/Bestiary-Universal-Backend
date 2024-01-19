@@ -1,20 +1,34 @@
 CREATE TABLE Beast (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(255) NOT NULL,
-    description TEXT,
-    img VARCHAR(255)
+                       id SERIAL PRIMARY KEY,
+                       nom VARCHAR(255) NOT NULL,
+                       description TEXT,
+                       img VARCHAR(255)
 );
 
 CREATE TABLE Universe (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(255) NOT NULL,
-    img VARCHAR(255)
+                          id SERIAL PRIMARY KEY,
+                          nom VARCHAR(255) NOT NULL,
+                          img VARCHAR(255)
 );
 
 CREATE TABLE BeastUniverse (
-    beast_id INT,
-    universe_id INT,
-    PRIMARY KEY (beast_id, universe_id),
-    FOREIGN KEY (beast_id) REFERENCES Beast(id),
-    FOREIGN KEY (universe_id) REFERENCES Universe(id)
+                               beast_id INT REFERENCES Beast(id),
+                               universe_id INT REFERENCES Universe(id),
+                               PRIMARY KEY (beast_id, universe_id)
 );
+
+CREATE TABLE "User" (
+                      id SERIAL PRIMARY KEY,
+                      firstName VARCHAR(255) NOT NULL,
+                      lastName VARCHAR(255) NOT NULL,
+                      login VARCHAR(255) UNIQUE NOT NULL,
+                      email VARCHAR(255) UNIQUE NOT NULL,
+                      password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE UserBeast (
+                           user_id INT REFERENCES "User"(id),
+                           beast_id INT REFERENCES Beast(id),
+                           PRIMARY KEY (user_id, beast_id)
+);
+
