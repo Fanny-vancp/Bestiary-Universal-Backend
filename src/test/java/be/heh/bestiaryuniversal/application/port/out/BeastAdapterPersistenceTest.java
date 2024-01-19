@@ -18,7 +18,7 @@ public class BeastAdapterPersistenceTest {
     private BeastAdapterPersistence persistence ;
 
     @Test
-    public void testFindAllBeasts() {
+    public void testStoreAllBeasts() {
 
         persistence = new BeastAdapterPersistence(beastsRepository);
         List<Beast> listBeast = persistence.storeAllBeasts();
@@ -28,11 +28,19 @@ public class BeastAdapterPersistenceTest {
     }
 
     @Test
-    public void testFindBeastsByUniverse(){
+    public void testStoreBeastsByUniverse(){
         persistence = new BeastAdapterPersistence(beastsRepository);
         List<Beast> listBeast = persistence.storeBeastsByUniverse(1);
 
         Assertions.assertEquals(2,listBeast.size());
+    }
+
+    @Test
+    public void testStoreBeastsByUser(){
+        persistence = new BeastAdapterPersistence(beastsRepository);
+        List<Beast> listBeast = persistence.storeBeastsByUser(5);
+
+        Assertions.assertEquals(3,listBeast.size());
     }
 
     @Test
