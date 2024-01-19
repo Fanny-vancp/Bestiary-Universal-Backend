@@ -26,6 +26,7 @@ public class Config {
     UniverseRepository universeRepository;
     UniversePersistence universePersistence;
 
+
    /* @Bean
     public BeastPersistence getBeastPersistence(){
         beastPersistence=new BeastAdapterPersistence(beastsRepository);
@@ -40,4 +41,6 @@ public class Config {
     public UniverseUseCase getUniverseUseCase() {
         return new UniverseService(new UniverseAdapterPersistence(universeRepository));
     }
+
+
 }

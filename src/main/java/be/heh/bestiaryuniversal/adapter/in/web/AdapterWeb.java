@@ -2,8 +2,10 @@ package be.heh.bestiaryuniversal.adapter.in.web;
 
 import be.heh.bestiaryuniversal.application.domain.model.Beast;
 import be.heh.bestiaryuniversal.application.domain.model.Universe;
+import be.heh.bestiaryuniversal.application.domain.model.User;
 import be.heh.bestiaryuniversal.application.port.in.BeastUseCase;
 import be.heh.bestiaryuniversal.application.port.in.UniverseUseCase;
+import be.heh.bestiaryuniversal.application.port.in.UserUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +17,24 @@ public class AdapterWeb {
     // attribute
     private BeastUseCase beastUseCase;
     private UniverseUseCase universeUseCase;
+    private UserUseCase userUseCase;
 
     //constructor
-    public AdapterWeb(BeastUseCase beastUseCase, UniverseUseCase universeUseCase){
+    public AdapterWeb(BeastUseCase beastUseCase, UniverseUseCase universeUseCase, UserUseCase userUseCase){
         this.beastUseCase=beastUseCase;
         this.universeUseCase = universeUseCase;
+        this.userUseCase= userUseCase;
     }
+
+
+
+    // beast
     @GetMapping("/beasts")
     public ResponseEntity<List<Beast>> beastsList(@RequestParam(required = false, defaultValue = "0") int universe){
         // request
         // https://bestiary.onrender.com/beasts -> get all beasts
         // https://bestiary.onrender.com/beasts?universe=1 -> get all beasts by his universe with the id(1)
+        // https://bestiary.onrender.com/beasts?user=1 -> get all favorites beasts by the id of the current user(1)
 
         List<Beast> listBeast;
         if (universe!=0) {
@@ -54,6 +63,7 @@ public class AdapterWeb {
 
 
 
+    // universe
     @GetMapping("/universes")
     public ResponseEntity<List<Universe>> universesList(){
         // request
@@ -75,5 +85,31 @@ public class AdapterWeb {
     public ResponseEntity<String> deleteUniverse(@RequestParam(required = true) int idUniverse) {
         universeUseCase.deleteUniverse(idUniverse);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Universe deleted successfully");
+    }
+
+
+
+    // user
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> usersList(){
+        // request
+        // https://bestiary.onrender.com/users -> get all users
+
+        List<User> listUsers;
+
+        listUsers = userUseCase.getAllUser();
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(listUsers);
+    }
+
+    @PostMapping("/user")
+    public ResponseEntity<String> addNewUser(@RequestBody UserValidation user){
+        userUseCase.addNewUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body("User added successfully");
+    }
+
+    @DeleteMapping("/user")
+    public ResponseEntity<String> deleteUser(@RequestParam(required = true) int idUser){
+        userUseCase.deleteUser(idUser);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("User deleted successfully");
     }
 }

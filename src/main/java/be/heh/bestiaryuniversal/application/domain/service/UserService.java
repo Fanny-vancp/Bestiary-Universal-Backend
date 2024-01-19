@@ -23,7 +23,7 @@ public class UserService implements UserUseCase {
     }
 
     @Override
-    public User getUserByLoginAndPassword() {
+    public User getUserById() {
         return null;
     }
 
