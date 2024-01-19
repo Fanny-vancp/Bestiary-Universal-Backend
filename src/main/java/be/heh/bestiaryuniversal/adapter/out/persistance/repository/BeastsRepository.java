@@ -53,6 +53,11 @@ public class BeastsRepository {
         jdbc.update(sql, idBeast, idUniverse);
     }
 
+    public void insertBeastToUserBeast(int idBeast, int idUser){
+        String sql = "INSERT INTO userbeast (beast_id, user_id) VALUES (?, ?)";
+        jdbc.update(sql, idBeast, idUser);
+    }
+
     public void deleteBeastFromTheDB(int idBeast){
         String sql = "DELETE FROM beast WHERE id = ?";
         jdbc.update(sql, idBeast);
@@ -61,5 +66,10 @@ public class BeastsRepository {
     public void deleteBeastFromTheUniverse(int idBeast, int idUniverse){
         String sql = "DELETE FROM beastuniverse WHERE beast_id = ? AND universe_id = ?";
         jdbc.update(sql, idBeast, idUniverse);
+    }
+
+    public void deleteBeastFromBeastUser(int idBeast, int idUser){
+        String sql = "DELETE FROM userbeast WHERE beast_id = ? AND user_id = ?";
+        jdbc.update(sql, idBeast, idUser);
     }
 }

@@ -50,6 +50,11 @@ public class BeastAdapterPersistence implements BeastPersistence {
     }
 
     @Override
+    public void addBeastToUserFavoris(int idBeast, int idUser) {
+        beastsRepository.insertBeastToUserBeast(idBeast, idUser);
+    }
+
+    @Override
     public void deleteBeastFromDB(int idBeast) {
         beastsRepository.deleteBeastFromTheDB(idBeast);
     }
@@ -57,5 +62,10 @@ public class BeastAdapterPersistence implements BeastPersistence {
     @Override
     public void deleteBeastFromUniverse(int idBeast, int idUniverse) {
         beastsRepository.deleteBeastFromTheUniverse(idBeast, idUniverse);
+    }
+
+    @Override
+    public void deleteBeastFromUserFavoris(int idBeast, int idUser) {
+        beastsRepository.deleteBeastFromBeastUser(idBeast, idUser);
     }
 }

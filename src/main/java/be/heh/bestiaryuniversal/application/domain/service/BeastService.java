@@ -44,6 +44,11 @@ public class BeastService implements BeastUseCase {
     }
 
     @Override
+    public void addBeastInUserFavoris(int idBeast, int idUser) {
+        beastPersistence.addBeastToUserFavoris(idBeast, idUser);
+    }
+
+    @Override
     public void deleteBeast(int idBeast) {
         beastPersistence.deleteBeastFromDB(idBeast);
     }
@@ -51,6 +56,11 @@ public class BeastService implements BeastUseCase {
     @Override
     public void deleteBeastInUniverse(int idBeast, int idUniverse) {
         beastPersistence.deleteBeastFromUniverse(idBeast, idUniverse);
+    }
+
+    @Override
+    public void deleteBeastInUserFavoris(int idBeast, int idUser) {
+        beastPersistence.deleteBeastFromUserFavoris(idBeast, idUser);
     }
 
 

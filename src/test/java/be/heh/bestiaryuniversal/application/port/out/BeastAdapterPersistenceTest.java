@@ -64,6 +64,15 @@ public class BeastAdapterPersistenceTest {
     }
 
     @Test
+    public void testAddBeastToUserFavoris(){
+        persistence = new BeastAdapterPersistence(beastsRepository);
+        persistence.addBeastToUserFavoris(6,3);
+
+        List<Beast> list = persistence.storeBeastsByUser(3);
+        Assertions.assertEquals(3,list.size());
+    }
+
+    @Test
     public void testDeleteBeastFromDB(){
         persistence = new BeastAdapterPersistence(beastsRepository);
         int idBeast = 10;
@@ -79,6 +88,15 @@ public class BeastAdapterPersistenceTest {
         persistence.deleteBeastFromUniverse(1,2);
 
         List<Beast> list = persistence.storeBeastsByUniverse(2);
+        Assertions.assertEquals(2,list.size());
+    }
+
+    @Test
+    public void testDeleteBeastFromUserFavoris(){
+        persistence = new BeastAdapterPersistence(beastsRepository);
+        persistence.deleteBeastFromUserFavoris(6,3);
+
+        List<Beast> list = persistence.storeBeastsByUser(3);
         Assertions.assertEquals(2,list.size());
     }
 }
