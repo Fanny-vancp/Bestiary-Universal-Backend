@@ -46,7 +46,7 @@ public class AdapterWeb {
         beastUseCase.addNewBeast(beast);
         return ResponseEntity.status(HttpStatus.CREATED).body("Beast added successfully");
     }
-    @DeleteMapping("/universe")
+    @DeleteMapping("/beast")
     public ResponseEntity<String> deleteBeast(@RequestParam(required = true) int idBeast) {
         beastUseCase.deleteBeast(idBeast);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Beast deleted successfully");
