@@ -7,9 +7,6 @@ import lombok.Setter;
 @Setter
 
 public class Beast {
-    private int idBeast;
-    private String nameBeast;
-
     public int getIdBeast() {
         return idBeast;
     }
@@ -42,6 +39,8 @@ public class Beast {
         this.descriptionBeast = descriptionBeast;
     }
 
+    private int idBeast;
+    private String nameBeast;
     private String imgBeast;
     private String descriptionBeast;
 
