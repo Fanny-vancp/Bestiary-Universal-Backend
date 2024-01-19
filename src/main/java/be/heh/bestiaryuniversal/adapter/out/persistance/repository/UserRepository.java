@@ -24,7 +24,7 @@ public class UserRepository {
     }
 
     public void insertNewUser(UserValidation newUser){
-        String sql = "INSERT INTO \"User\" (firstname, lastname, login, email, password) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO \"User\" (firstname, lastname, login, email, password) VALUES (?, ?, ?,?,?)";
         jdbc.update(sql, newUser.getFirstNameUser(),
                 newUser.getLastNameUser(), newUser.getLoginUser(),
                 newUser.getEmailUser(), newUser.getPasswordUser());

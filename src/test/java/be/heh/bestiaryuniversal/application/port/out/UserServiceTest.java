@@ -1,11 +1,13 @@
 package be.heh.bestiaryuniversal.application.port.out;
 
+import be.heh.bestiaryuniversal.BestiaryUniversalApplication;
 import be.heh.bestiaryuniversal.application.domain.model.Beast;
 import be.heh.bestiaryuniversal.application.domain.model.User;
 import be.heh.bestiaryuniversal.application.domain.service.BeastService;
 import be.heh.bestiaryuniversal.application.domain.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@SpringBootTest(classes = BestiaryUniversalApplication.class)
 public class UserServiceTest {
     @Test
     public void test_getAllUser() {

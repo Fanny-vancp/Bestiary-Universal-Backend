@@ -1,6 +1,30 @@
 package be.heh.bestiaryuniversal.application.domain.model;
 
 public class User {
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public String getFirstNameUser() {
+        return firstNameUser;
+    }
+
+    public String getLastNameUser() {
+        return lastNameUser;
+    }
+
+    public String getLoginUser() {
+        return loginUser;
+    }
+
+    public String getEmailUser() {
+        return emailUser;
+    }
+
+    public String getPasswordUser() {
+        return passwordUser;
+    }
+
     private int idUser;
     private String firstNameUser;
     private String lastNameUser;
