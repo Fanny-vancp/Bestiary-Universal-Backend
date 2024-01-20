@@ -47,7 +47,6 @@ public class AdapterWeb {
             listBeast = beastUseCase.getAllBeast();
         }
         //return listBeast;
-        // question for the teacher -> ask if the headers are obligated
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(listBeast);
     }
 
@@ -59,12 +58,22 @@ public class AdapterWeb {
         beastUseCase.addNewBeast(beast);
         return ResponseEntity.status(HttpStatus.CREATED).body("Beast added successfully");
     }
+
     @DeleteMapping("/beast")
     public ResponseEntity<String> deleteBeast(@RequestParam(required = true) int idBeast) {
         beastUseCase.deleteBeast(idBeast);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Beast deleted successfully");
     }
 
+
+    // favoris
+    @PostMapping("/favoris")
+    public ResponseEntity<String> addBeastInFavoris(
+            @RequestParam(required = true) int beast,
+            @RequestParam(required = true) int user){
+        beastUseCase.addBeastInUserFavoris(beast, user);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Beast added successfully");
+    }
 
 
     // universe
@@ -116,4 +125,7 @@ public class AdapterWeb {
         userUseCase.deleteUser(idUser);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("User deleted successfully");
     }
+
+
+    // /beast=1?user=1 -> add a favoris
 }
