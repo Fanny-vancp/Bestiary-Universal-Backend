@@ -75,11 +75,11 @@ public class BeastAdapterPersistenceTest {
     @Test
     public void testDeleteBeastFromDB(){
         persistence = new BeastAdapterPersistence(beastsRepository);
-        int idBeast = 10;
+        int idBeast = 9;
         persistence.deleteBeastFromDB(idBeast);
 
         List<Beast> listBeast = persistence.storeAllBeasts();
-        Assertions.assertEquals(9, listBeast.size());
+        Assertions.assertEquals(8, listBeast.size());
     }
 
     @Test

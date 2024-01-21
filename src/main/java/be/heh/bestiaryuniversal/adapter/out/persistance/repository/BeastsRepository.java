@@ -72,4 +72,14 @@ public class BeastsRepository {
         String sql = "DELETE FROM userbeast WHERE beast_id = ? AND user_id = ?";
         jdbc.update(sql, idBeast, idUser);
     }
+
+    public void deleteBeastAssociationInBeastUniverse(int idBeast){
+        String sql = "DELETE FROM beastuniverse WHERE beast_id = ?";
+        jdbc.update(sql, idBeast);
+    }
+
+    public void deleteBeastAssociationInBeastUser(int idBeast){
+        String sql = "DELETE FROM userbeast WHERE beast_id = ?";
+        jdbc.update(sql, idBeast);
+    }
 }

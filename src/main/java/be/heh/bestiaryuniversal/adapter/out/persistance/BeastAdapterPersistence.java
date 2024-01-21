@@ -56,6 +56,8 @@ public class BeastAdapterPersistence implements BeastPersistence {
 
     @Override
     public void deleteBeastFromDB(int idBeast) {
+        beastsRepository.deleteBeastAssociationInBeastUniverse(idBeast);
+        beastsRepository.deleteBeastAssociationInBeastUser(idBeast);
         beastsRepository.deleteBeastFromTheDB(idBeast);
     }
 
