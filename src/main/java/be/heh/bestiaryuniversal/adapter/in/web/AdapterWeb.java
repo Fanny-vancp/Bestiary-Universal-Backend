@@ -75,6 +75,14 @@ public class AdapterWeb {
         return ResponseEntity.status(HttpStatus.CREATED).body("Beast added successfully");
     }
 
+    @DeleteMapping("/favoris")
+    public ResponseEntity<String> deleteBeastInFavoris(
+            @RequestParam(required = true) int beast,
+            @RequestParam(required = true) int user){
+        beastUseCase.deleteBeastInUserFavoris(beast, user);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Beast added successfully");
+    }
+
 
     // universe
     @GetMapping("/universes")
