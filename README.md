@@ -22,7 +22,7 @@ https://bestiary.onrender.com/users -> renvoie tout les users
 ### Post
 https://bestiary.onrender.com/beast -> permet d'ajouter une nouvelle créature grâce au corps de la requête
 
-https://bestiary.onrender.com/favoris?beast=1?user=1 -> permet d'ajouter une créature dans les favoris d'un utilisateur
+https://bestiary.onrender.com/favoris?beast=1&user=1 -> permet d'ajouter une créature dans les favoris d'un utilisateur
 grâce à l'id de la bête et l'id de l'utilisateur dans le tête de la requête
 
 https://bestiary.onrender.com/universe -> permet d'ajouter un nouveau univers grâce au coprs de la requête
