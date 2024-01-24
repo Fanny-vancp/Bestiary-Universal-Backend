@@ -39,3 +39,7 @@ dans la tête de la requête
 https://bestiary.onrender.com/user?idUser=1 -> permet de supprimer un utilisateur en récupérant son id 
 dans la tête de la requête
 
+https://bestiary.onrender.com/favoris?beast=1&user=1 -> permet de suppression une créature dans les favoris d'un 
+utilisateur grâce à l'id de la bête et l'id de l'utilisateur dans le tête de la requête
+
+
